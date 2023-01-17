@@ -4,9 +4,20 @@
   "description": "google odrd implementation",
   "main": "index.js",
   "scripts": {
-    "start": "node index"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC"
+  "dependencies": {
+    "@googlemaps/fleetengine": "https://storage.googleapis.com/fleetengine-gapic/dist/793/2022-07-19/maps-fleetengine-v1-nodejs.tar.gz",
+    "@googlemaps/google-maps-services-js": "^3.3.16"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/smrutikant/npm-google-odrd.git"
+  },
+  "author": "Smrutikant Nayak",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/smrutikant/npm-google-odrd/issues"
+  },
+  "homepage": "https://github.com/smrutikant/npm-google-odrd#readme"
 }
