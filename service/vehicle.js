@@ -34,7 +34,7 @@ class Vehicle{
                 maximumCapacity:req.capacity,
                 supportedTripTypes:req.supportedTrips
             }
-            const createVehicle = await ODRD.vehicleClient.createVehicle(
+            const createVehicle = await this.vehicleClient.createVehicle(
                 {
                     parent: `providers/${this.projectId}`, 
                     vehicleId: vehicleId,
@@ -58,5 +58,28 @@ class Vehicle{
             throw(err);
         }
     }
+    async updateLastlocation(req){
+        const vehicleId = req.vehicle_id;
+        try{
+            const now = new Date() ;
+            const utcMilllisecondsSinceEpoch = now.getTime() + (now.getTimezoneOffset() * 60 * 1000)  
+            const utcSecondsSinceEpoch = Math.round(utcMilllisecondsSinceEpoch / 1000)  
+            const vehicleData = {
+                lastLocation: {
+                    location:req.last_location,
+                    updateTime:{
+                        seconds:utcSecondsSinceEpoch
+                    }
+                },
+                
+            }
+            const updateMask = {paths:["last_location"]};
+            const updateLocationReq = await updateVehicle(vehicleId,vehicleData,updateMask)
+            return updateLocationReq;
+        }catch(err){
+            throw(err);
+        }
+    }
+    
 }
 module.exports = {Vehicle};
