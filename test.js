@@ -1,14 +1,13 @@
-const {Vehicle} = require ('./service/vehicle.js');
-
+const { Odrd,Vehicle } = require('google-odrd');
 const option = {
-    "project_id" : "<Your Project Id>",
-    "token": "<One of the desired Token(Admin/Consumer/Driver)>"
+    "project_id" : "<project_id>",
+    "token": "<the_token>"
 }
 
 async function run(){
     const vehicle = new Vehicle(option);
     const req = {
-        "vehicle_id":"FRHMW8F_SFG3TM0"
+        "vehicle_id":"<vehicle_id>"
     }
     const vehicleInfo = await vehicle.getVehicle(req);
     console.log(vehicleInfo);
